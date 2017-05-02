@@ -2,9 +2,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 
-
-var index = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./routes/index');
 
 var app = express();
 
@@ -12,12 +10,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
